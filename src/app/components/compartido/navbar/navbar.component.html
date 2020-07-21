@@ -1,0 +1,11 @@
+<nav class="navbar navbar-expand-sm navbar-expand-md navbar-expand-lg fontcolorNavBar">
+    <div class="collapse navbar-collapse">
+        <span class="navbar-text mr-3 ml-auto " *ngIf="auth.userProfile$ | async as profile ">
+          {{ profile.nickname }}
+        </span>
+        <button type="button " class="btn btn-danger " (click)="auth.logout() " *ngIf="auth.loggedIn ">
+          Salir
+      </button>
+    </div>
+</nav>
+<hr class="h1NavBar">

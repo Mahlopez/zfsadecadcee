@@ -1,0 +1,159 @@
+<app-navbar-interno></app-navbar-interno>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="pacman">
+    <p style="font-size: 20px; color: white">Consultando...</p>
+</ngx-spinner>
+<div id="accordion" class="alinear-centro mt-5">
+    <div class="container">
+        <div class="card fontTitulosAcordeon">
+            <a class="btn btn-link" data-toggle="collapse" data-target="#collapseConsultarFecha" aria-expanded="true" aria-controls="collapseConsultarFecha" (click)="ocultarDiv()">
+                <div class="card-header" id="headingConsultarFecha">
+                    <h3 class="mb-0">
+                        Consulta facturación por Fecha
+                    </h3>
+                </div>
+            </a>
+            <div id="collapseConsultarFecha" class="collapse show fontAcordeon" aria-labelledby="headingConsultarFecha" data-parent="#accordion">
+                <div class="card-body">
+                    <table class="tablaAcordeon">
+                        <tr>
+                            <td>
+                                <input type="radio" id="bdFecha" name="consultaFecha" class="radioButon">
+                                <label for="bdFecha">Descargar desde la Base de datos</label>
+                            </td>
+                            <td style="text-align: center">
+                                <input type="radio" id="swFecha" name="consultaFecha" class="radioButon">
+                                <label for="swFecha">Descargar desde la Swagger</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="container-fluid">
+                        <input type="text" id="fecha" placeholder="2020-02-15" #valorFecha class="form-control">
+                        <div style="margin-top: 10px;">
+                            <a (click)="getFacturasPorFecha(profile.sub)" *ngIf="auth.userProfile$ | async as profile" style="cursor:pointer;">
+                                <img src="../../../../assets/image/CONSULTAR.svg" width="5%" height="5%">
+                            </a>
+                        </div>
+                    </div>
+                    <!--button type="button" class="btn btn2 btn-centrado" (click)="getFacturasPorFecha(profile.sub)" *ngIf="auth.userProfile$ | async as profile ">Consultar</button-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseConsultarPrescripcion" aria-expanded="false" aria-controls="collapseConsultarPrescripcion">
+                <div class="card-header fontTitulosAcordeon" id="headingConsultarPrescripcion">
+                    <h3 class="mb-0">
+                        Consulta por Prescripción
+                    </h3>
+                </div>
+            </a>
+            <div id="collapseConsultarPrescripcion" class="collapse fontAcordeon" aria-labelledby="headingConsultarPrescripcion" data-parent="#accordion">
+                <div class="card-body">
+                    <table class="tablaAcordeon">
+                        <tr>
+                            <td>
+                                <input type="radio" id="bdPrescripcion" name="consultaPrescripcion" class="radioButon">
+                                <label for="bdPrescripcion">Descargar desde la Base de datos</label>
+                            </td>
+                            <td style="text-align: center">
+                                <input type="radio" id="swPrescripcion" name="consultaPrescripcion" class="radioButon">
+                                <label for="swPrescripcion">Descargar desde la Swagger</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="text" class="form-control" placeholder="Número de prescripción" id="prescripcion" #valorPrescripcion>
+                    <div class="input-group-btn">
+                        <div style="margin-top: 10px;">
+                            <a (click)="getFacturasPorPrescripcion(profile.sub)" *ngIf="auth.userProfile$ | async as profile " style="cursor:pointer;">
+                                <img src="../../../../assets/image/CONSULTAR.svg" width="5%" height="5%">
+                            </a>
+                        </div>
+                        <!--button class="btn btn2 btn-centrado" type="button" (click)="getFacturasPorPrescripcion(profile.sub)" *ngIf="auth.userProfile$ | async as profile ">
+                        </button-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseConsultarArchivoCarga" aria-expanded="false" aria-controls="collapseConsultarArchivoCarga">
+                <div class="card-header fontTitulosAcordeon" id="headingArchivoCarga">
+                    <h3 class="mb-0">
+                        Consulta por Archivo de Carga
+                    </h3>
+                </div>
+            </a>
+            <div id="collapseConsultarArchivoCarga" class="collapse fontAcordeon" aria-labelledby="headingArchivoCarga" data-parent="#accordion">
+                <div class="card-body">
+                    <label for="file">Seleccione un archivo</label>
+                    <input type="file" id="file" class="form-control" (change)="subirArchivo($event.target.files,profile.sub)" *ngIf="auth.userProfile$ | async as profile ">
+                </div>
+                <div style="margin-top: 10px;">
+                    <a (click)="procesarArchivo()" style="cursor:pointer;">
+                        <img src="../../../../assets/image/reportar.svg" width="5%" height="5%">
+                    </a>
+                </div>
+                <!--div>
+                    <button class="btn btn2 btn-centrado" (click)="procesarArchivo()">Consultar</button>
+                </div-->
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="isShown">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>FecAnulacion</th>
+                <th>IDFacturacion</th>
+                <th>NoPrescripcion</th>
+                <th>TipoTec</th>
+                <th>ConTec</th>
+                <th>TipoIDPaciente</th>
+                <th>NoIDPaciente</th>
+                <th>NoEntrega</th>
+                <th>NoFactura</th>
+                <th>NoIDEPS</th>
+                <th>CodEPS</th>
+                <th>CodSerTecAEntregado</th>
+                <th>CantUnMinDis</th>
+                <th>ValorUnitFacturado</th>
+                <th>ValorTotFacturado</th>
+                <th>CuotaModer</th>
+                <th>Copago</th>
+                <th>FecFacturacion</th>
+                <th>EstFacturacion</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let facturas of listaFacturas">
+                <td>{{ facturas.ID}}</td>
+                <td>{{ facturas.FecAnulacion}}</td>
+                <td>{{ facturas.IDFacturacion}}</td>
+                <td>{{ facturas.NoPrescripcion}}</td>
+                <td>{{ facturas.TipoTec}}</td>
+                <td>{{ facturas.ConTec}}</td>
+                <td>{{ facturas.TipoIDPaciente}}</td>
+                <td>{{ facturas.NoIDPaciente}}</td>
+                <td>{{ facturas.NoEntrega}}</td>
+                <td>{{ facturas.NoFactura}}</td>
+                <td>{{ facturas.NoIDEPS}}</td>
+                <td>{{ facturas.CodEPS}}</td>
+                <td>{{ facturas.CodSerTecAEntregado}}</td>
+                <td>{{ facturas.CantUnMinDis}}</td>
+                <td>{{ facturas.ValorUnitFacturado}}</td>
+                <td>{{ facturas.ValorTotFacturado}}</td>
+                <td>{{ facturas.CuotaModer}}</td>
+                <td>{{ facturas.Copago}}</td>
+                <td>{{ facturas.FecFacturacion}}</td>
+                <td>{{ facturas.EstFacturacion}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/2ed32854-dd14-4496-9716-91a76f118107/resourceGroups/Atlon_Front/providers/Microsoft.Web/sites/AtlonMirpesFront",
+    "appService.deploySubpath": "dist\\atlonMipresFront"
+}

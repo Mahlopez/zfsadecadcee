@@ -1,0 +1,81 @@
+<div class="container-fluid animated fadeIn" *ngIf="auth.loggedIn">
+    <router-outlet></router-outlet>
+    <div *ngIf="visible.visible">
+        <app-navbar></app-navbar>
+        <div class="container">
+            <div class="container-fluid mt-4">
+                <div class="card-deck">
+                    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title carPrincipalTitulo">Direccionamiento y Programacion</h5>
+                            <p class="card-text carPrincipalCuerpo">Conozca las Tecnologías en Salud No UPC prescritas y realice la programación</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="# " class="btn btn btn-outline-success">Ingresar</a>
+                        </div>
+                    </div>
+                    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title carPrincipalTitulo">Entrega y Reporte Entrega</h5>
+                            <p class="card-text carPrincipalCuerpo">
+                                Gestión de información para la dispensación/entrega de las tecnologías en salud No UPC.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="# " class="btn btn btn-outline-success">Ingresar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-deck" style="margin-top: -20px;">
+                    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title carPrincipalTitulo">Facturacion</h5>
+                            <p class="card-text carPrincipalCuerpo">Reporte de la información de Facturación de Tecnologías en Salud, No UPC o Servicios Complementarios.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="# " class="btn btn btn-outline-success" routerLink="/facturacionHome" (click)="visible.toggle()">Ingresar</a>
+                        </div>
+                    </div>
+                    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title carPrincipalTitulo">Asesoria</h5>
+                            <p class="card-text carPrincipalCuerpo">Contamos con personal altamente capacitado capaz de resolver cualquier duda que tengan...</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="# " class="btn btn-outline-success">Ingresar</a>
+                        </div>
+                    </div>
+                    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title carPrincipalTitulo">Control De Costos</h5>
+                            <p class="card-text carPrincipalCuerpo">Consulte el costo de los procesos realizados</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="# " class="btn btn-outline-success">Ingresar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5" *ngIf="!auth.loggedIn">
+    <div class="row">
+        <img src=" ../assets/image/LOGOLARGO1-9.png " class="img-fluid " alt="Responsive image" width="90%" height="60%">
+    </div>
+    <div class="row mt-3 ">
+        <div class="row mt-3 ml-auto mr-auto ">
+            <div class="col-sm-6 offset-md-1 ">
+                <img src="../assets/image/aplication.png " class="img-fluid mx-auto d-block " alt="Responsive image" width='300px' height='300px'>
+            </div>
+            <div class="col-sm-4 d-flex align-items-center rounded border border-light shadow-sm p-5 mb-5 bg-white rounded">
+                <div class="container-fluid mt-3">
+                    <p class="lead text-center ">Si ya tienes una cuenta por favor presiona ingresar, de lo contrario contacta con nuestros asesores para tener información</p>
+                    <hr class="my-4 ">
+                    <div class="d-flex justify-content-center ">
+                        <button type="button " (click)="auth.login() " class="btn btn-outline-success ">Ingresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

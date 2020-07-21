@@ -1,0 +1,103 @@
+.body {
+    background-image: url(../src/assets/image/text2.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.h1NavBar {
+    border: 1px solid #1bb1b5;
+    margin: 0px;
+}
+
+.fontcolorNavBar {
+    color: #1d91bf;
+    font-size: 23px;
+    font-weight: 200;
+    font-family: 'atlon';
+}
+
+@font-atlon {
+    font-family: atlon;
+    src: url(/src/assets/font/lucida-bright) format('truetype');
+}
+
+.fontTitulos {
+    color: #225ea8;
+    font-size: 40px;
+    font-family: 'atlon';
+}
+
+.fontAcordeon {
+    color: #1d91bf;
+    font-size: 23px;
+    font-family: 'atlon';
+}
+
+.fontTitulosAcordeon {
+    color: #225ea8;
+    font-size: 50px;
+    font-family: 'atlon';
+}
+
+.radioButon {
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.tablaAcordeon {
+    width: "70%";
+    margin: auto;
+}
+
+.carPrincipalTitulo {
+    margin-top: -25px;
+    color: #225ea8;
+    font-size: 23px;
+    font-family: 'atlon';
+}
+
+.carPrincipalCuerpo {
+    /* color: #1d91bf;
+    font-size: 19px;
+    font-family: 'atlon';*/
+    font-size: 19px;
+}
+
+.hrCard {
+    border: 0.5px solid #E3E3E3;
+    margin: 0px;
+    margin-bottom: 1em;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.example-is-mobile .example-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+}
+
+h1.example-app-name {
+    margin-left: 8px;
+}
+
+.example-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+}

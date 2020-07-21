@@ -1,0 +1,23 @@
+<app-navbar-interno></app-navbar-interno>
+<div class="container alinear-centro">
+    <div class="card">
+        <div class="card-header">
+            <label>Subir archivo</label>
+        </div>
+        <div class="card-body">
+            <label for="file">Seleccione un archivo</label>
+            <input type="file" id="file" class="form-control" (change)="subirArchivo($event.target.files,profile.sub)" *ngIf="auth.userProfile$ | async as profile ">
+        </div>
+        <div>
+            <button class="btn-primary btn-margin30" (click)="procesarArchivo()">Subir Archivo</button>
+        </div>
+    </div>
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="pacman"
+>  <p style="font-size: 20px; color: white">Reportando...</p>
+</ngx-spinner>
+
